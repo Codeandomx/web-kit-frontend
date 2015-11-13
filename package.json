@@ -1,0 +1,26 @@
+{
+  "name": "web-kit-frontend",
+  "version": "1.0.0",
+  "description": "Servidor web para inciar proyectos de aplicaciones web frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://nemesis866@github.com/nemesis866/web-kit-frontend.git"
+  },
+  "keywords": [
+    "servidor",
+    "web",
+    "frontend",
+    "kit",
+    "inicio"
+  ],
+  "author": "Paulo Andrade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nemesis866/web-kit-frontend/issues"
+  },
+  "homepage": "https://github.com/nemesis866/web-kit-frontend#readme"
+}
