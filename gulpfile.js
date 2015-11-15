@@ -58,7 +58,7 @@ gulp.task('wiredep', function (){
 	.pipe(gulp.dest('./app'));
 });
 
-// Dejamos en escucha las siguientes tareas
+// Dejamos en escucha las siguientes tareas - modo developer
 gulp.task('watch', function (){
 	gulp.watch([paths.html], ['html']);
 	gulp.watch([paths.js], ['inject']);
@@ -66,4 +66,12 @@ gulp.task('watch', function (){
 	gulp.watch([paths.bower], ['wiredep']);
 });
 
+// Tareas watch para modo servidor
+gulp.task('watch-server-only', function (){
+	gulp.watch([paths.html], ['html']);
+});
+
+gulp.task('server-only', ['server', 'html', 'watch-server-only']);
+
+// Tarea por defecto
 gulp.task('default', ['server', 'html', 'inject', 'wiredep', 'watch']);
