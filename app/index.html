@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" ng-app="app">
 <head>
 	<meta charset="UTF-8">
-	<title>Web Kit Starter Angular</title>
+	<title>Web Kit Starter AngularJS</title>
 
 	<!-- bower:css -->
 	<!-- endbower -->
@@ -12,7 +12,9 @@
 
 </head>
 <body>
-	<h1>Hello World!!!</h1>
+	<div ng-controller="mainController as vm">
+		<h1>{{ vm.msg }}</h1>
+	</div>
 
 	<!-- bower:js -->
 	<script src="vendor/jquery/dist/jquery.js"></script>
@@ -21,6 +23,7 @@
 	<!-- endbower -->
 	<!-- inject:js -->
 	<script src="/scripts/app.js"></script>
+	<script src="/scripts/controllers/mainController.js"></script>
 	<!-- endinject -->
 </body>
 </html>
