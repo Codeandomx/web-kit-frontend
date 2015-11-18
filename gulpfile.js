@@ -67,11 +67,9 @@ gulp.task('watch', function (){
 });
 
 // Tareas watch para modo servidor
-gulp.task('watch-server-only', function (){
+gulp.task('server-only', ['server', 'html'], function (){
 	gulp.watch([paths.html], ['html']);
 });
-
-gulp.task('server-only', ['server', 'html', 'watch-server-only']);
 
 // Tarea por defecto
 gulp.task('default', ['server', 'html', 'inject', 'wiredep', 'watch']);
