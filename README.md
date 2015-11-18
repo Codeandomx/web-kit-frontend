@@ -5,7 +5,7 @@ Servidor web optimizado para trabajar con aplicaciones SPA (Single Page Applicat
 
 # Entorno de desarrollo
 
-En este repositorio encontraras un entorno de desarrollo para aplicaciones web creadas con el framework AngularJs, destacamos lo siguiente.-
+En este repositorio encontraras un entorno de desarrollo para aplicaciones web creadas con el framework AngularJS, destacamos lo siguiente.-
 
 * Servidor web con live reload.
 * Inyector de dependencias con bower.
@@ -17,7 +17,7 @@ Solo te encargaras de crear tu aplicación, nosotros nos encargamos del resto...
 
 1.- Descarga o clona este repositorio en tu ordenador.
 
-2.- Instala las dependencias del proyecto.-
+2.- Instala las dependencias del proyecto con una sola instrucción.-
 
 ```js
 npm install
@@ -27,18 +27,29 @@ npm install
 
 El proyecto cuenta con la opción de encender solo el servidor, simplemente para ver en pantalla nuestra aplicación.-
 
-http://127.0.0.1:3000
-
 Para encender el servidor ejecuta el comando.-
 
 ```js
 npm start
 ```
 
+Ya puedes ingresar a la url http://127.0.0.1:3000 desde tu navegador para ver en funcionamiento la aplicación.
+
 ## Modo developer
 
-En este modo podras estar inyectando archivos js, css y dependencias instaladas con bower al archivo index.html, ejecutando el siguiente comando para activarlo.-
+Este modo es recomendado para el desarrollo de la aplicación, tendrá las siguientes opciones.-
+
+* Al crear archivos js y css se inyectaran automaticamente al archivo index.php.
+* Al instalar dependencias con bower se inyectaran automaticamente al archivo index.html.
+
+Nota.- Si elimina archivos js, css o desinstala dependencias con bower, el enlace a estos se eliminara del archivo index.html.
+
+Para activar el modo developer ejecute el siguiente comando.-
 
 ```js
 npm run dev
 ```
+
+Ya puede acceder al servidor desde.-
+
+http://127.0.0.1:3000
