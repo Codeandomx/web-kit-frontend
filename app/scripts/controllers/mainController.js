@@ -1,11 +1,11 @@
 /*************************************
-Controlador principal de la app
+Controlador principal de la app 
 *************************************/
 
 (function (){
 	'use strict';
 
-	function mainController ($scope)
+	function MainController ()
 	{
 		var vm = this;
 
@@ -14,5 +14,5 @@ Controlador principal de la app
 
 	angular
 		.module('app')
-			.controller('mainController', ['$scope', mainController]);
+			.controller('mainController', ['$scope', MainController]);
 })();
