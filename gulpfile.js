@@ -3,7 +3,9 @@ var gulp = require('gulp'),
 	connect = require('gulp-connect'),
 	historyApiFallback = require('connect-history-api-fallback'),
 	inject = require('gulp-inject'),
-	wiredep = require('wiredep').stream;
+	wiredep = require('wiredep').stream,
+	jshint = require('gulp-jshint'),
+	stylish = require('jshint-stylish');
 
 // Creamos objeto con las rutas utilizadas en gulfile.js
 var paths = {
@@ -61,10 +63,19 @@ gulp.task('wiredep', function (){
 	.pipe(gulp.dest('./app'));
 });
 
+// Mostramos los errores javascript en consola
+gulp.task('lint', function (){
+	return gulp.src(paths.js)
+	.pipe(jshint('.jshintrc'))
+	.pipe(jshint.reporter('jshint-stylish'))
+	.pipe(jshint.reporter('fail'));
+});
+
 // Dejamos en escucha las siguientes tareas - modo developer
 gulp.task('watch', function (){
 	gulp.watch([paths.html], ['html']);
-	gulp.watch([paths.js], ['inject']);
+	gulp.watch([paths.js], ['inject', 'lint']);
+	gulp.watch(['./gulpfile.js'], ['lint']);
 	gulp.watch([paths.css], ['inject']);
 	gulp.watch([paths.bower], ['wiredep']);
 });
