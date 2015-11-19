@@ -33,24 +33,27 @@ gulp.task('html', function (){
 });
 
 // Inyectamos los archivos propios (js y css) al index.html
-gulp.task('inject', function (){
+gulp.task('inject', ['wiredep'], function (){
 	var sources = gulp.src([paths.js, paths.css]);
 
 	return gulp.src('index.html', {
-				cwd: './app'
-			})
-			.pipe(inject(sources, {
-				read: false,
-				ignorePath: '/app'
-			}))
-			.pipe(gulp.dest('./app'));
+		cwd: './app'
+	})
+	.pipe(inject(sources, {
+		read: false,
+		ignorePath: '/app'
+	}))
+	.pipe(gulp.dest('./app'));
 });
 
 // Inyectamos las dependencias que instalemos con bower
 gulp.task('wiredep', function (){
-	gulp.src('./app/index.html')
+	return gulp.src('index.html', {
+		cwd: './app'
+	})
 	.pipe(wiredep({
 		directory: './app/vendor',
+		read: false,
 		onError: function (err){
 			console.log(err.code);
 		}
@@ -72,4 +75,4 @@ gulp.task('server-only', ['server', 'html'], function (){
 });
 
 // Tarea por defecto
-gulp.task('default', ['server', 'html', 'inject', 'wiredep', 'watch']);
+gulp.task('default', ['server', 'inject', 'watch']);
