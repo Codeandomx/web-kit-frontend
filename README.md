@@ -20,7 +20,7 @@ Solo te encargaras de crear tu aplicación, nosotros nos encargamos del resto...
 2.- Instala las dependencias del proyecto con una sola instrucción.-
 
 ```js
-npm install
+$ npm install
 ```
 
 ## Encender el servidor
@@ -30,7 +30,7 @@ El proyecto cuenta con la opción de encender solo el servidor, simplemente para
 Para encender el servidor ejecuta el comando.-
 
 ```js
-npm start
+$ npm start
 ```
 
 Ya puedes ingresar a la url http://127.0.0.1:3000 desde tu navegador para ver en funcionamiento la aplicación.
@@ -47,7 +47,7 @@ Nota.- Si elimina archivos js, css o desinstala dependencias con bower, el enlac
 Para activar el modo developer ejecute el siguiente comando.-
 
 ```js
-npm run dev
+$ npm run dev
 ```
 
 Ya puede acceder al servidor desde.-
