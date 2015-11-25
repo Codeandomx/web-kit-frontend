@@ -1,5 +1,9 @@
 // Importamos las dependencias
 var gulp = require('gulp'),
+	uglify = require('gulp-uglify'),
+	gutil = require('gulp-util'),
+	minifyCss = require('gulp-minify-css'),
+	concat = require('gulp-concat'),
 	connect = require('gulp-connect'),
 	historyApiFallback = require('connect-history-api-fallback'),
 	inject = require('gulp-inject'),
@@ -11,9 +15,28 @@ var gulp = require('gulp'),
 var paths = {
 	html: './app/**/*.html',
 	js: './app/scripts/**/*.js',
+	jsMin: './app/min/js/**/*.js',
 	css: './app/styles/**/*.css',
+	cssMin: './app/min/css/**/*.css',
 	bower: './bower.json'
 };
+
+// Comprime los archivos css
+gulp.task('minify-css', function() {
+  return gulp.src(paths.css)
+    .pipe(minifyCss({
+    	compatibility: 'ie8'
+    }))
+    .pipe(gulp.dest('./app/min/css'));
+});
+
+// Comprime los archivos javascript
+gulp.task('minify-js', function() {
+	gulp.src(paths.js)
+	.pipe(concat('build.js'))
+	.pipe(uglify().on('error', gutil.log))
+	.pipe(gulp.dest('./app/min/js'))
+});
 
 // Creamos el servidor con la opcion livereload activada y con
 // el historial activado para app SPA
@@ -36,7 +59,7 @@ gulp.task('html', function (){
 
 // Inyectamos los archivos propios (js y css) al index.html
 gulp.task('inject', ['wiredep'], function (){
-	var sources = gulp.src([paths.js, paths.css]);
+	var sources = gulp.src([paths.jsMin, paths.cssMin]);
 
 	return gulp.src('index.html', {
 		cwd: './app'
@@ -74,9 +97,9 @@ gulp.task('lint', function (){
 // Dejamos en escucha las siguientes tareas - modo developer
 gulp.task('watch', function (){
 	gulp.watch([paths.html], ['html']);
-	gulp.watch([paths.js], ['inject', 'lint']);
+	gulp.watch([paths.js], ['inject', 'minify-js', 'lint']);
 	gulp.watch(['./gulpfile.js'], ['lint']);
-	gulp.watch([paths.css], ['inject']);
+	gulp.watch([paths.css], ['inject', 'minify-css']);
 	gulp.watch([paths.bower], ['wiredep']);
 });
 
@@ -86,4 +109,4 @@ gulp.task('server-only', ['server', 'html'], function (){
 });
 
 // Tarea por defecto
-gulp.task('default', ['server', 'inject', 'watch']);
+gulp.task('default', ['server', 'minify-js', 'minify-css', 'inject', 'watch']);
