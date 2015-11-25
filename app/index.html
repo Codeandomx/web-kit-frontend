@@ -11,16 +11,23 @@
 	<link rel="stylesheet" href="/min/css/main.css">
 	<!-- endinject -->
 
+	<base href="/">
 </head>
 <body>
-	<div ng-controller="mainController as vm">
-		<h1>{{ vm.msg }}</h1>
-	</div>
+	<nav>
+		<ul>
+			<li><a href="/">Inicio</a></li>
+			<li><a href="/page1">Página 1</a></li>
+			<li><a href="/page2">Página 2</a></li>
+		</ul>
+	</nav>
+	<div ng-view></div>
 
 	<!-- bower:js -->
 	<script src="vendor/jquery/dist/jquery.js"></script>
 	<script src="vendor/angular/angular.js"></script>
 	<script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="vendor/angular-route/angular-route.js"></script>
 	<!-- endbower -->
 	<!-- inject:js -->
 	<script src="/min/js/build.js"></script>

@@ -3,4 +3,6 @@ Modulos de la app
 *************************************/
 
 angular
-	.module('app', []);
+	.module('app', [
+		'ngRoute'
+	]);

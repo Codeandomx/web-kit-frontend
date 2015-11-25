@@ -9,7 +9,9 @@ Controlador principal de la app
 	{
 		var vm = this;
 
-		vm.msg = 'Hello World!!!';
+		vm.home = 'Hello World AngularJS';
+		vm.page1 = 'Pagina 1';
+		vm.page2 = 'Pagina 2';
 	}
 
 	angular
