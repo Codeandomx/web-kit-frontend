@@ -17,6 +17,13 @@ Solo te encargaras de crear tu aplicación, nosotros nos encargamos del resto...
 
 1.- Descarga o clona este repositorio en tu ordenador.
 
+```js
+$ git clone https://github.com/nemesis866/web-kit-frontend.git nombre_proyecto
+$ cd nombre_proyecto
+```
+
+Nota.- Cambia nombre_proyecto por el nombre que le quieras dar al directorio donde se clonara el repositorio.
+
 2.- Instala las dependencias del proyecto con una sola instrucción.-
 
 ```js
