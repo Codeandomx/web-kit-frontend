@@ -2,7 +2,7 @@
 var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	gutil = require('gulp-util'),
-	minifyCss = require('gulp-minify-css'),
+	cleanCss = require('gulp-clean-css'),
 	concat = require('gulp-concat'),
 	connect = require('gulp-connect'),
 	historyApiFallback = require('connect-history-api-fallback'),
@@ -24,7 +24,7 @@ var paths = {
 // Comprime los archivos css
 gulp.task('minify-css', function() {
   return gulp.src(paths.css)
-    .pipe(minifyCss({
+    .pipe(cleanCss({
     	compatibility: 'ie8'
     }))
     .pipe(gulp.dest('./app/min/css'));
